@@ -1,0 +1,207 @@
+
+
+
+<h4>Add Units</h4>
+
+<!-- success alert message start -->
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success</strong> Your data has been entered.
+    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<!-- success alert message end -->
+
+<div class="container-fluid" style="border:1px solid rgb(112, 105, 105); border-radius: 2px;">
+    <form [formGroup]="addUnits" (ngSubmit)="getValues()">
+        <div class="row">
+          <div class="col-md-12">
+            
+            <label id="labelcolor">Add Units</label>
+        </div>
+            <div class="col-md-3">
+                <label id="labelcolor">Add Photo</label>
+            </div>
+            <div class="form-group col-md-9">
+                    <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+	                  <div><img [src]="url" id="imagePreview" class="form-control" formControlName="add_photo"  *ngIf="url" required></div>
+	                  <p><input type="file"  (change)="selectFile($event)">	</p>
+            </div>
+
+            <div class="col-md-3">
+                 <label id="labelcolor">User</label>
+            </div>
+            <div class="form-group col-md-9">
+              <select class="form-control" formControlName="user" required>
+                <option value="">Select User</option>
+                <option value="1">user1</option>
+                <option value="2">user2</option>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+                  <label id="labelcolor">Unit Name <span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+              <input type="text" class="form-control" formControlName="unit_name" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">Address-1 <span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+              <input type="text" class="form-control" formControlName="address_1" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">Address-2 <span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+              <input type="text" class="form-control" formControlName="address_2" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">Address-3 <span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+              <input type="text" class="form-control" formControlName="address_3" required />
+            </div>
+
+            <div class="col-md-3">
+                <label id="labelcolor">City<span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="city" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">State<span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <select class="form-control" formControlName="State" required>
+                      <option value="">Select State</option>
+                      <option value="1">Andaman and Nicobar Islands</option>
+                      <option value="2">Andhra Pradesh</option>
+                      <option value="3">Arunachal Pradesh</option>
+                      <option value="4">Assam</option>
+                      <option value="5">Bihar</option>
+                      <option value="6">Chandigarh</option>
+                      <option value="7">Chhattisgarh</option>
+                      <option value="8">Dadar and Nagar Haveli</option>
+                      <option value="9">Daman and Diu</option>
+                      <option value="10">Delhi</option>
+                      <option value="11">Goa</option>
+                      <option value="12">Gujarat</option>
+                      <option value="13">Haryana</option>
+                      <option value="14">Himachal Pradesh</option>
+                      <option value="15">Jammu and Kashmir</option>
+                      <option value="16">Jharkhand</option>
+                      <option value="17">Karnataka</option>
+                      <option value="18">Kerala</option>
+                      <option value="19">Lakshadweep</option>
+                      <option value="20">Madhya Pradesh</option>
+                      <option value="21">Maharashtra</option>
+                      <option value="22">Manipur</option>
+                      <option value="23">Meghalaya</option>
+                      <option value="24">Mizoram</option>
+                      <option value="25">Nagaland</option>
+                      <option value="26">Odisha</option>
+                      <option value="27">Pondicherry</option>
+                      <option value="28">Punjab</option>
+                      <option value="29">Rajasthan</option>
+                      <option value="30">Sikkim</option>
+                      <option value="31">Tamil Nadu</option>
+                      <option value="32">Telangana</option>
+                      <option value="33">Tripura</option>
+                      <option value="34">Uttar Pradesh</option>
+                      <option value="35">Uttarakhand</option>
+                      <option value="36">West Bangal</option>
+                </select>
+            </div>
+
+
+
+
+
+            <div class="col-md-3">
+                <label id="labelcolor">Post Code<span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="postcode" required />
+            </div>
+
+            <div class="col-md-3">
+                  <label id="labelcolor">Contact Person<span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                  <input type="text" class="form-control"  formControlName="contact_person" required />
+            </div>
+
+            <div class="col-md-3">
+                <label id="labelcolor">Mobile-1<span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="mobile_1" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">Mobile-2<span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="mobile_2" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">PAN No <span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="pan_no" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">GST <span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="gst" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">Bank Name<span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="bank_name" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">Branch Name <span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="branch_name" required />
+            </div>
+
+            <div class="col-md-3">
+              <label id="labelcolor">Account No <span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="account_no" required />
+            </div>
+            <div class="col-md-3">
+              <label id="labelcolor">IFSC Code <span id="spancolor">*</span></label>
+            </div>
+            <div class="form-group col-md-9">
+                <input type="text" class="form-control" formControlName="ifsc_code" required />
+            </div>
+
+            <div class="col-md-3"></div>
+            <div class="form-group col-md-4">
+              <button class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-danger" placeholder="Reset">Reset</button>
+          </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+

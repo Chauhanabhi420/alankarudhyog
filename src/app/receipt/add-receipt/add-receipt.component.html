@@ -1,0 +1,75 @@
+<h4>Add Receipt</h4>
+
+<!-- success alert message start -->
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success</strong> Your data has been entered.
+    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<!-- success alert message end -->
+
+<div class="container-fluid" style="border:1px solid rgb(112, 105, 105); border-radius: 2px;">
+    <form [formGroup]="addReceipt" (ngSubmit)="getValues()">
+        <div class="row">
+            <div class="form-group col-md-4">
+
+                <label id="labelcolor">Receipt No.<span id="spancolor">*</span></label><br>
+                <input type="text" class="form-control" formControlName="receipt_no" required />
+            </div>
+
+            <div class="form-group col-md-4">
+                <label id="labelcolor">Date <span id="spancolor">*</span></label><br>
+                <input class="form-control" id="receipt_date" formControlName="receipt_date" placeholder="{{valuedate | date: 'dd-MM-yyyy'}}" [minDate]="minDate" [maxDate]="maxDate" bsDatepicker #datepickerYMD="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" required />
+            </div>
+
+            <div class="form-group col-md-4">
+              <label>Paymode <span id="spancolor">*</span></label><br>
+              <select class="form-control" formControlName="paymode"  required>
+                <option name="" value="" disabled selected>Select Payment Type</option>
+                <option name="credit" value="credit">Credit</option>
+                <option name="cash" value="cash">Cash</option>
+              </select>
+          </div>
+
+          <div class="form-group col-md-4">
+              <label name="labelcolor">Party <span id="spancolor">*</span></label><br>
+              <select class="form-control" formControlName="party" required>
+                  <option name="party" value="" disabled selected>Select Party</option>
+                  <option name="party" >PARTY</option>
+                  <option name="party">PARTY</option>
+              </select>
+          </div>
+
+          <div class="form-group col-md-4">
+              <label id="labelcolor">Party Address <span id="spancolor">*</span></label><br>
+              <input type="text" class="form-control" formControlName="party_address" required />
+          </div>
+
+          <div class="form-group col-md-4">
+              <label id="labelcolor">Party Mobile <span id="spancolor">*</span></label><br>
+              <input type="tel" class="form-control" formControlName="party_mobile" required />
+          </div>
+
+
+
+
+          <div class="form-group col-md-4">
+              <label id="labelcolor">Amount <span id="spancolor">*</span></label><br>
+              <input type="text" class="form-control" formControlName="amount" required />
+          </div>
+
+
+          <div class="form-group col-md-8">
+              <label id="labelcolor">Remark <span id="spancolor">*</span></label><br>
+              <input type="text" class="form-control" formControlName="remark" required />
+          </div>
+
+
+                <div class="form-group col-md-4">
+                  <button class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-danger" placeholder="Reset">Reset</button>
+              </div>
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,20 @@
+.container-fluid {
+    margin-top: 10px;
+    padding: 10px;
+  
+    align-content: center;
+    display: flex;
+  }
+  
+  #spancolor {
+    color: red;
+  }
+  .col-md-3 {
+    text-align: right;
+  }
+  #imagePreview {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ddd;
+  }
+  

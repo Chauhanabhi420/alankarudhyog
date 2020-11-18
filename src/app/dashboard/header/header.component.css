@@ -12,8 +12,9 @@
 mat-sidenav-container{
     height: 100%;
 }
+
 mat-sidenav {
-    width: 280px;
+    width: 250px;
     padding: 15px;
 }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ChallanService} from '../../challan.service';
+import {ChallanService} from '../../services/challan.service';
 import {ChallanDataFields} from 'src/ChallanDataFields';
 import {MatTableDataSource} from '@angular/material/table'
 import { UpdateChallanComponent } from '../update-challan/update-challan.component';

@@ -1,0 +1,32 @@
+<div class="container">
+    <h1 class="mat-h1">Users</h1>
+    <p class="mat-caption">All registered Users</p>
+  
+    <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">SNo.</th>
+          <th scope="col">User Name</th>
+          <th scope="col">Login ID</th>
+          <th scope="col">Email</th>
+          <th scope="col">Sign-up Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of collection">
+          <th scope="row">{{count+1}}</th>
+          <td>{{item.user_name}}</td> 
+          <td>{{item.user_login_id}}</td>
+          <td>{{item.user_email}}</td>
+          <td>NA</td>
+      
+          <th><i (click)="deleteUser(item.id)" class="fa fa-trash" style="font: size 30px;color:red;">
+          </i>
+          <a (click)="lcUpdateUser(item.id)"><i class="fa fa-edit" style="font: size 30px;color:blue;"></i></a>
+          <a (click)="lcprintUser(item.id)"><i class="fa fa-print" style="font: size 30px;color:blue;"></i></a>
+        </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>

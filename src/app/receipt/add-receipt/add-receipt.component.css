@@ -1,0 +1,17 @@
+.container-fluid {
+    margin-top: 10px;
+    padding: 30px;
+    margin-bottom: 10px;
+  
+    align-content: center;
+    display: flex;
+  }
+  form {
+  }
+  .white-space {
+    height: 100px;
+  }
+  #spancolor {
+    color: red;
+  }
+  

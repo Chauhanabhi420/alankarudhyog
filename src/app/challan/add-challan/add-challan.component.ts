@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ChallanService} from '../../challan.service'
+import {ChallanService} from '../../services/challan.service'
 import { FormControl, FormGroup } from '@angular/forms';
 
 

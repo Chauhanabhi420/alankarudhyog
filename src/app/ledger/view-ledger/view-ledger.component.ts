@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LedgerService } from 'src/app/ledger.service';
+import { LedgerService } from 'src/app/services/ledger.service';
 import { HeaderComponent } from 'src/app/dashboard/header/header.component';
 import { UpdateLedgerComponent } from '../update-ledger/update-ledger.component';
 

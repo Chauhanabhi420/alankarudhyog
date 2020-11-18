@@ -10,9 +10,9 @@
         </span>
 
         <span class="toolbar-spacer"></span>
-        My Account
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </mat-toolbar>
-    <mat-sidenav-container class="sidenavcontainer">  
+    <mat-sidenav-container class="sidenavcontainer">
         <mat-sidenav #sidenav opened mode="side" position="start">
             <mat-list class="menu">
                 <!-- <mat-card-header>
@@ -27,66 +27,159 @@
                     <mat-list-item>
                         <button class="menu-item" mat-flat-button (click)="lcDCard()">
                             <mat-icon>dashboard</mat-icon>
-                           Dashboard
+                            Dashboard
                         </button>
                     </mat-list-item>
                     <mat-divider></mat-divider>
                     <mat-list-item>
-                        <button class="menu-item" mat-flat-button>
+                        <button class="menu-item" mat-flat-button (click)="toggleMSM()">
                             <mat-icon>settings</mat-icon>
                             Manage Masters
-                        </button>
+                        </button><span><br></span>
                     </mat-list-item>
                     <mat-divider></mat-divider>
+                    <div class="sub-menu" *ngIf="showMaster" style="padding-left: 15px;">
+                        <mat-list-item class="menu-item">
+                            <button class="menu-item" mat-flat-button (click)="toggleLSM()">
+                                <mat-icon>category</mat-icon>
+                                Ledger
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <div class="sub-menu-item" *ngIf="showLSM" style="padding-left: 25px;">
+                            <mat-list-item class="nav-sub-menu-item">
+                                <button class="menu-item" mat-flat-button (click)="lcAddLedger()">
+                                    <mat-icon>category</mat-icon>
+                                    Add Ledger
+                                </button>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item class="nav-sub-menu-item">
+                                <button class="menu-item" mat-flat-button (click)="lcViewLedger()">
+                                    <mat-icon>category</mat-icon>
+                                    View/Edit Ledger
+                                </button>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </div>
+                        <mat-list-item>
+                            <button class="menu-item" mat-flat-button (click)="togglePSM()">
+                                <mat-icon>category</mat-icon>
+                                Product
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <div class="sub-menu-item" *ngIf="showPSM" style="padding-left: 25px;">
+                            <mat-list-item class="nav-sub-menu-item">
+                                <button class="menu-item" mat-flat-button (click)="lcAddProduct()">
+                                    <mat-icon>category</mat-icon>
+                                    Add Product
+                                </button>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item class="nav-sub-menu-item">
+                                <button class="menu-item" mat-flat-button (click)="lcViewProduct()">
+                                    <mat-icon>category</mat-icon>
+                                    View/Edit Product
+                                </button>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </div>
+                        <mat-list-item>
+                            <button class="menu-item" mat-flat-button  (click)="toggleUSM()">
+                                <mat-icon>category</mat-icon>
+                                User
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <div class="sub-menu-item" *ngIf = "showUSM" style="padding-left: 25px;">
+                            <mat-list-item class="nav-sub-menu-item">
+                                <button class="menu-item" mat-flat-button (click)="lcAddUser()">
+                                    <mat-icon>category</mat-icon>
+                                    Add User
+                                </button>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item class="nav-sub-menu-item">
+                                <button class="menu-item" mat-flat-button (click)="lcViewUser()">
+                                    <mat-icon>category</mat-icon>
+                                    View/Edit User
+                                </button>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </div>
+                        <mat-list-item>
+                            <button class="menu-item" mat-flat-button  (click)="toggleTSM()">
+                                <mat-icon>category</mat-icon>
+                                Unit
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <div class="sub-menu-item" *ngIf = "showTSM" style="padding-left: 25px;">
+                            <mat-list-item class="nav-sub-menu-item">
+                                <button class="menu-item" mat-flat-button (click)="lcAddUnit()">
+                                    <mat-icon>category</mat-icon>
+                                    Add Unit
+                                </button>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item class="nav-sub-menu-item">
+                                <button class="menu-item" mat-flat-button (click)="lcViewUnit()">
+                                    <mat-icon>category</mat-icon>
+                                    View/Edit Unit
+                                </button>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </div>
                     <mat-list-item>
-                        <button class="menu-item" mat-flat-button (click)="lcAddLedger()">
-                            <mat-icon>category</mat-icon>
-                            Add Ledger
-                        </button>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
-                        <button class="menu-item" mat-flat-button (click)="lcViewLedger()">
-                            <mat-icon>category</mat-icon>
-                            View/Edit Ledger
-                        </button>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
-                        <button class="menu-item" mat-flat-button (click)="lcAddProduct()">
-                            <mat-icon>category</mat-icon>
-                            Add Product
-                        </button>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
-                        <button class="menu-item" mat-flat-button (click)="lcViewProduct()">
-                            <mat-icon>category</mat-icon>
-                            View/Edit Product
-                        </button>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
-                        <button class="menu-item" mat-flat-button (click)="lcAddChallan()">
+                        <button class="menu-item" mat-flat-button (click)="toggleCSM()">
                             <mat-icon>library_books</mat-icon>
-                            Add Challan
+                            Challan
                         </button>
                     </mat-list-item>
                     <mat-divider></mat-divider>
+                    <div class="sub-menu-item" *ngIf="showChallan" style="padding-left: 15px;">
+                        <mat-list-item>
+                            <button class="menu-item" mat-flat-button (click)="lcAddChallan()">
+                                <mat-icon>library_books</mat-icon>
+                                Add Challan
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <button class="menu-item" mat-flat-button (click)="lcViewChallan()">
+                                <mat-icon>library_books</mat-icon>
+                                View/Edit Challan
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                    </div>
+
+                   <!---------------------receipt menu    ----------------> 
                     <mat-list-item>
-                        <button class="menu-item" mat-flat-button (click)="lcViewChallan()">
-                            <mat-icon>library_books</mat-icon>
-                            View/Edit Challan
-                        </button>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
-                        <button class="menu-item" mat-flat-button>
+                        <button class="menu-item" mat-flat-button (click)="toggleRSM()">
                             <mat-icon>receipt</mat-icon>
                             Reciept
                         </button>
                     </mat-list-item>
                     <mat-divider></mat-divider>
+                    <div class="sub-menu-item" *ngIf="showRSM" style="padding-left: 15px;">
+                        <mat-list-item>
+                            <button class="menu-item" mat-flat-button (click)="lcAddReceipt()">
+                                <mat-icon>library_books</mat-icon>
+                                Add Receipt
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <button class="menu-item" mat-flat-button (click)="lcViewReceipt()">
+                                <mat-icon>library_books</mat-icon>
+                                View/Edit Receipt
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                    </div>
                     <mat-list-item>
                         <button class="menu-item" mat-flat-button>
                             <mat-icon>table_view</mat-icon>
@@ -98,7 +191,7 @@
         </mat-sidenav>
         <mat-sidenav-content>
             <div class="main-content">
-                <ng-container *ngComponentOutlet = "LC"></ng-container>
+                <ng-container *ngComponentOutlet="LC"></ng-container>
             </div>`
         </mat-sidenav-content>
     </mat-sidenav-container>

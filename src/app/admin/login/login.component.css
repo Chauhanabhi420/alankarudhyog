@@ -1,0 +1,37 @@
+.app-container {
+  min-height: 100%;
+
+  background-color: rgb(2, 3, 63);
+}
+
+.row {
+  padding: 5px;
+  max-width: 30%;
+
+  margin-left: 35%;
+  margin-top: 15%;
+
+  border: 1px solid black;
+  background-color: rgb(32, 4, 99);
+}
+/* input {
+  height: 30px;
+  font-size: small;
+} */
+#btn {
+  text-align: right;
+}
+/* button {
+  font-size: small;
+  height: 30px;
+  width: 50px;
+} */
+#remember {
+  color: white;
+  /* font-size: small; */
+}
+
+h3 {
+  text-align: center;
+  color: white;
+}

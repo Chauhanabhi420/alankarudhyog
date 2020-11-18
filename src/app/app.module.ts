@@ -11,6 +11,23 @@ import { ChallanModule } from './challan/challan.module';
 import {ProductModule} from './product/product.module';
 import { LedgerModule } from './ledger/ledger.module';
 
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { fakeBackendProvider } from './admin/helper/fakeBackend';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+// import { LoginComponent } from './login/login.component';
+import { JwtInterceptor, ErrorInterceptor } from './admin/helper';
+
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
+import { MomentModule } from 'angular2-moment';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { AdminModule } from './admin/admin.module';
+import { UnitsModule } from './units/units.module';
+import { UserModule } from './user/user.module';
+import { ReceiptModule } from './receipt/receipt.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +39,24 @@ import { LedgerModule } from './ledger/ledger.module';
     ChallanModule,
     ProductModule,
     LedgerModule,
+    AdminModule,
+    UnitsModule,
+    UserModule,
+    ReceiptModule,
     BrowserAnimationsModule,
     NgbModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    AdminModule,
+    NgIdleKeepaliveModule.forRoot(),
+    MomentModule,
+    ModalModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BsModalService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    fakeBackendProvider,
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
-import {ActivatedRoute} from '@angular/router'
-import { ChallanService } from 'src/app/challan.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { ChallanService } from 'src/app/services/challan.service';
 
 @Component({
   selector: 'app-update-challan',
@@ -45,7 +44,7 @@ export class UpdateChallanComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
   
-  constructor(private router:ActivatedRoute, private editChallanService:ChallanService) { 
+  constructor(private editChallanService:ChallanService) { 
     this.minDate = new Date();
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 15000);

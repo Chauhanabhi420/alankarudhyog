@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import { LedgerService } from 'src/app/ledger.service';
+import { LedgerService } from 'src/app/services/ledger.service';
 
 @Component({
   selector: 'app-update-ledger',
