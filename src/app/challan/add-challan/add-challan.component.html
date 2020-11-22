@@ -35,31 +35,38 @@
     
                 <div class="form-group col-md-4">
                     <label name="labelcolor">Unit *</label><br>
-                    <input type="number" class="form-control" formControlName="unit" required />
+                    <!-- <input type="number" class="form-control" formControlName="unit" required /> -->
+                    <select class="form-control" formControlName="unit" required>
+                        <option value="0">--Select Unit--</option>
+                        <option *ngFor="let unitName of unitNameList" [value]="unitName.com_id">
+                            {{ unitName.com_name }}
+                        </option>
+                    </select>
                 </div>
     
                 <div class="form-group col-md-4">
                     <label name="labelcolor">Party *</label><br>
-                    <select class="form-control" formControlName="selectParty" required>
-                        <option name="party">PARTY</option>
-                        <option name="party">PARTY</option>
-                        <option name="party">PARTY</option>
+                    <select class="form-control" formControlName="selectParty" (ngModelChange)="partyCall($event)" required>
+                        <option>--Party Name--</option>
+                        <option *ngFor="let partyName of partyNameList" [value]="partyName.ledger_id">
+                            {{ partyName.ledger_name }}
+                        </option>
                     </select>
                 </div>
                 <div class="col-md-4"></div>
                 <div class="form-group col-md-4">
                     <label id="labelcolor">Party Name *</label><br>
-                    <input type="text" class="form-control" formControlName="party_name" required />
+                    <input type="text" class="form-control" [value]="partyDetailsList.ledger_name" formControlName="party_name" required />
                 </div>
     
                 <div class="form-group col-md-4">
                     <label>Party Address</label><br>
-                    <input type="text" class="form-control" formControlName="party_address" />
+                    <input type="text" class="form-control" [value]="partyDetailsList.ledger_address_line1" formControlName="party_address" />
                 </div>
     
                 <div class="form-group col-md-4">
                     <label>Party Mobile</label><br>
-                    <input type="tel" class="form-control" formControlName="party_mobile" />
+                    <input type="tel" class="form-control" [value]="partyDetailsList.ledger_mobile" formControlName="party_mobile" />
                 </div>
     
                 <div class="form-group col-md-4">
@@ -75,9 +82,10 @@
                 <div class="form-group col-md-4">
                     <label id="labelcolor">Vehicle *</label><br>
                     <select class="form-control" formControlName="vehicleInfo" required>
-                        <option name="vehicle">PARTY</option>
-                        <option name="vehicle">PARTY</option>
-                        <option name="vehicle">PARTY</option>
+                        <option name="vehicle">Select Vehicle</option>
+                        <option *ngFor="let partyName of vehicleNameList" [value]="partyName.ledger_id">
+                            {{ partyName.ledger_name }}
+                        </option>
                     </select>
                 </div>
     
@@ -96,9 +104,10 @@
                 <div class="form-group col-md-12">
                     <label id="labelcolor">Product *</label><br>
                     <select class="form-control" formControlName="productInfo" required>
-                        <option name="product">product</option>
-                        <option name="product">product</option>
-                        <option name="product">product</option>
+                        <option>-----Select Product-----</option>
+                        <option *ngFor="let proName of productNameList" [value]="proName.p_id">
+                            {{ proName.p_name }}
+                        </option>
                     </select>
                 </div>
     
@@ -121,9 +130,9 @@
                     <label id="labelcolor">Payment *</label><br>
                     <select class="form-control" formControlName="paymentMethod" required>
                         <option name="payment">Select Payment Type</option>
-                        <option name="payment">Debit/Credit Card</option>
-                        <option name="payment">UPI</option>
-                        <option name="payment">Cash In Hand</option>
+                        <option name="payment" value="1">Debit/Credit Card</option>
+                        <option name="payment" value="2">UPI</option>
+                        <option name="payment" value="2">Cash In Hand</option>
                     </select>
                 </div>
     

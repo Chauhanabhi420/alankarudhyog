@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class ReceiptService {
 
   rid:any;
 
-  url = "http://localhost:3000/receipt"
+  url = "http://localhost:3000/receipts"
   rooturl = "http://localhost:3000"
 
   constructor(private http:HttpClient) { }
@@ -16,7 +16,7 @@ export class ReceiptService {
   saveReceipt(data)
   {
     // console.warn(data)
-    return this.http.post(this.url,data)  
+    return this.http.post(this.url+'/add',data)  
   }
 
   public getReceipt()
@@ -32,6 +32,6 @@ export class ReceiptService {
 
   updateReceipt(id, data)
   {
-    return this.http.put(`${this.url}/${id}`, data)
+    return this.http.patch(`${this.url}/${id}`, data)
   }
 }

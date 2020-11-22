@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ReceiptService } from 'src/app/Services/receipt.service';
+import { LedgerService } from 'src/app/services/ledger.service';
 
 @Component({
   selector: 'app-add-receipt',
@@ -27,26 +28,51 @@ export class AddReceiptComponent implements OnInit {
 
   minDate: Date;
   maxDate: Date;
-      constructor(private receiptService:ReceiptService) {
-        this.minDate = new Date();
-        this.maxDate = new Date();
-        this.minDate.setDate(this.minDate.getDate() - 15000);
-        this.maxDate.setDate(this.maxDate.getDate());
 
-      }
-      getValues() {
-        // console.warn(this.addReceipt.value);
-       this.receiptService.saveReceipt(this.addReceipt.value).subscribe((result)=>{
-         this.alert=true
-       })
-       this.addReceipt.reset({})
-     }
-     closeAlert()
-     {
-       this.alert = false;
-     }
+  partyNameList:any = [];
+  partyDetailsList:any =[];
+
+  constructor(
+    private receiptService:ReceiptService,
+    private partyName: LedgerService
+    ) {
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() - 15000);
+    this.maxDate.setDate(this.maxDate.getDate());
+
+  }
+
+  loadPartyName() {
+    this.partyName.getPartyName().subscribe((data:any) => {
+      this.partyNameList = data;
+    })
+  }
+
+  loadPartyDetails(id) {
+    this.partyName.getPartyDetails(id).subscribe((data:any) => {
+      this.partyDetailsList = data;
+    })
+  }
+
+  getValues() {
+    // console.warn(this.addReceipt.value);
+    this.receiptService.saveReceipt(this.addReceipt.value).subscribe((result)=>{
+      this.alert=true
+    })
+    this.addReceipt.reset({})
+  }
+  closeAlert()
+  {
+    this.alert = false;
+  }
+
+  partyCalling(val:Int16Array) {
+    this.loadPartyDetails(val);
+  }
 
   ngOnInit(): void {
+    this.loadPartyName();
   }
 
 }

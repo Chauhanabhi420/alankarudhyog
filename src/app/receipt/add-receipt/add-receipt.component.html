@@ -27,28 +27,29 @@
               <label>Paymode <span id="spancolor">*</span></label><br>
               <select class="form-control" formControlName="paymode"  required>
                 <option name="" value="" disabled selected>Select Payment Type</option>
-                <option name="credit" value="credit">Credit</option>
-                <option name="cash" value="cash">Cash</option>
+                <option name="credit" value="1">Credit</option>
+                <option name="cash" value="2">Cash</option>
               </select>
           </div>
 
           <div class="form-group col-md-4">
               <label name="labelcolor">Party <span id="spancolor">*</span></label><br>
-              <select class="form-control" formControlName="party" required>
-                  <option name="party" value="" disabled selected>Select Party</option>
-                  <option name="party" >PARTY</option>
-                  <option name="party">PARTY</option>
+              <select class="form-control" formControlName="party" (ngModelChange)="partyCalling($event)" required>
+                  <option name="party" value="0" disabled selected>Select Party</option>
+                  <option *ngFor="let partyName of partyNameList" [value]="partyName.ledger_id">
+                    {{ partyName.ledger_name }}
+                  </option>
               </select>
           </div>
 
           <div class="form-group col-md-4">
               <label id="labelcolor">Party Address <span id="spancolor">*</span></label><br>
-              <input type="text" class="form-control" formControlName="party_address" required />
+              <input type="text" class="form-control" [value]="partyDetailsList.ledger_address_line1" formControlName="party_address" required />
           </div>
 
           <div class="form-group col-md-4">
               <label id="labelcolor">Party Mobile <span id="spancolor">*</span></label><br>
-              <input type="tel" class="form-control" formControlName="party_mobile" required />
+              <input type="tel" class="form-control" [value]="partyDetailsList.ledger_mobile" formControlName="party_mobile" required />
           </div>
 
 

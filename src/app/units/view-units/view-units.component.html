@@ -17,19 +17,19 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of collection">
-          <th scope="row">{{count+1}}</th>
-          <td>{{item.unit_name}}</td> 
-          <td>{{item.user}}</td>
-          <td>{{item.city}}</td>
-          <td>{{item.State}}</td>
-          <td>{{item.contact_person}}</td>
-          <td>NA</td>
+          <th scope="row">{{item.com_id}}</th>
+          <td>{{item.com_name}}</td> 
+          <td>{{item.user.user_name}}</td>
+          <td>{{item.com_city}}</td>
+          <td>{{item.com_state}}</td>
+          <td>{{item.com_contact_person}}</td>
+          <td>{{item.com_created}}</td>
       
-          <th><i (click)="deleteUnit(item.id)" class="fa fa-trash" style="font: size 30px;color:red;">
-          </i>
-          <a (click)="lcUpdateUnit(item.id)"><i class="fa fa-edit" style="font: size 30px;color:blue;"></i></a>
-          <a (click)="lcprintUnit(item.id)"><i class="fa fa-print" style="font: size 30px;color:blue;"></i></a>
-        </th>
+          <th>
+            <a (click)="deleteUnit(item.com_id)"><i class="fa fa-trash" style="font: size 30px;color:red;"></i></a>
+            <a (click)="lcUpdateUnit(item.com_id)"><i class="fa fa-edit" style="font: size 30px;color:blue;"></i></a>
+            <a (click)="lcprintUnit(item.com_id)"><i class="fa fa-print" style="font: size 30px;color:blue;"></i></a>
+          </th>
         </tr>
       </tbody>
     </table>

@@ -15,11 +15,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of collection">
-          <th scope="row">{{count+1}}</th>
+          <th scope="row">{{item.user_id}}</th>
           <td>{{item.user_name}}</td> 
-          <td>{{item.user_login_id}}</td>
+          <td>{{item.user_loginid}}</td>
           <td>{{item.user_email}}</td>
-          <td>NA</td>
+          <td>{{item.user_created}}</td>
       
           <th><i (click)="deleteUser(item.id)" class="fa fa-trash" style="font: size 30px;color:red;">
           </i>

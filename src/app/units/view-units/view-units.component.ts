@@ -11,8 +11,9 @@ import { UpdateUnitComponent } from '../update-unit/update-unit.component';
 export class ViewUnitsComponent implements OnInit {
 
 
-  collection:any;
+  collection:any = [];
   count = 0;
+  status = 0;
 
   constructor(private viewUnitService:UnitsService, private hc:HeaderComponent) { }
 
@@ -25,6 +26,10 @@ export class ViewUnitsComponent implements OnInit {
   public lcUpdateUnit(item){
     this.viewUnitService.tid = item;
     this.hc.LC = UpdateUnitComponent;
+  }
+  public deleteUnit(id){
+    this.viewUnitService.destroyUnits(id, status)
+    console.warn('deleting..', id)
   }
 
 }

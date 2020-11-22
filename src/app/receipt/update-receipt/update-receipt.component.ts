@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms'
 import { ReceiptService } from 'src/app/Services/receipt.service';
+import { LedgerService } from 'src/app/services/ledger.service';
 
 @Component({
   selector: 'app-update-receipt',
@@ -28,35 +29,58 @@ export class UpdateReceiptComponent implements OnInit {
 
   minDate: Date;
   maxDate: Date;
+
+  partyNameList:any = [];
+  partyDetailsList:any = [];
   
-  constructor(private editReceiptService:ReceiptService) { 
+  constructor(
+    private editReceiptService:ReceiptService,
+    private partyName: LedgerService
+    ) { 
     this.minDate = new Date();
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 15000);
     this.maxDate.setDate(this.maxDate.getDate());
   }
 
+  loadPartyName() {
+    this.partyName.getPartyName().subscribe((data:any) => {
+      this.partyNameList = data;
+    })
+  }
+
+  loadPartyDetails(id) {
+    this.partyName.getPartyDetails(id).subscribe((data:any) => {
+      this.partyDetailsList = data;
+    })
+  }
+
   ngOnInit(): void {
     // console.warn(this.router.snapshot.params.id)
     this.editReceiptService.getCurrentReceipt().subscribe((result)=>{
-       console.warn(result)
+      // console.warn(result);
       this.editReceipt = new FormGroup({
-        receipt_no: new FormControl(result['receipt_no']),
-        receipt_date: new FormControl(result['receipt_date']),
-        paymode: new FormControl(result['paymode']),
-        party: new FormControl(result['party']),
-        party_address: new FormControl(result['party_address']),
-        party_mobile: new FormControl(result['party_mobile']),
-        amount: new FormControl(result['amount']),
-        remark: new FormControl(result['remark'])
-      
+        receipt_no: new FormControl(result['r_voucher_no']),
+        receipt_date: new FormControl(result['r_date']),
+        paymode: new FormControl(result['r_payment_id']),
+        party: new FormControl(result['r_party_id']),
+        party_address: new FormControl(result['ledger[ledger_address_line1]']),
+        party_mobile: new FormControl(result['ledger[ledger_mobile]']),
+        amount: new FormControl(result['r_amount']),
+        remark: new FormControl(result['r_remark'])
       })
+      this.partyCalling(result['r_party_id']);
     })
     this.id = this.editReceiptService.rid;
+    this.loadPartyName();
+  }
+
+  partyCalling(val:Int16Array) {
+    this.loadPartyDetails(val);
   }
 
   updateReceipt(){
-    // console.warn("item", this.editChallan.value)
+    // console.warn("item", this.editReceipt.value)
     this.editReceiptService.updateReceipt(this.id, this.editReceipt.value).subscribe((result)=>{
       this.alert=true
     })

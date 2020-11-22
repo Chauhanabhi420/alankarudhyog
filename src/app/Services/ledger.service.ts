@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class LedgerService {
 
   lid:any;
 
-  url = "http://localhost:3000/ledger"
+  url = "http://localhost:3000/ledgers"
   rooturl = "http://localhost:3000"
 
   constructor(private http:HttpClient) { }
@@ -16,13 +17,25 @@ export class LedgerService {
   saveLedger(data)
   {
     // console.warn(data)
-    return this.http.post(this.url,data)  
+    return this.http.post(this.url+'/add',data)  
   }
 
   public getLedger()
   {
     // console.warn(this.http.get(this.url))
     return this.http.get(this.url)  
+  }
+
+  getPartyName():Observable<any[]> {
+    return this.http.get<any>(this.url + '/party-name');
+  }
+
+  getVehicleName():Observable<any[]> {
+    return this.http.get<any>(this.url + '/vehicle-name');
+  }
+
+  getPartyDetails(id):Observable<any[]> {
+    return this.http.get<any>(this.url+`/${id}`);
   }
 
   getCurrentLedger()

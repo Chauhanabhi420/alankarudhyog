@@ -15,28 +15,28 @@
         <th scope="col">Payment Type</th>
         <th scope="col">Amount</th>
         <th scope="col">Challan Date</th>
-        <th scope="col">Creation Date</th>
+        <th scope="col">Creation Time</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of collection">
-        <th scope="row">{{item.id}}</th>
-        <td>{{item.challan_no}}</td> 
-        <td>NA</td>
-        <td>{{item.party_name}}</td>
-        <td>{{item.vehicleInfo}}</td>
-        <td>{{item.productInfo}}</td>
-        <td>NA</td>
-        <td>{{item.paymentMethod}}</td>
-        <td>{{item.advance_amount}}</td>
-        <td>{{item.challan_date}}</td>
-        <td>NA</td>
+        <th scope="row">{{item.c_id}}</th>
+        <td>{{item.c_voucher_no}}</td> 
+        <td>{{item.company.com_name}}</td>
+        <td>{{item.c_partyname}}</td>
+        <td>{{item.ledger.ledger_name}}</td>
+        <td>{{item.product.p_name}}</td>
+        <td>{{item.user.user_company_address}}</td>
+        <td>{{item.c_payment_type}}</td>
+        <td>{{item.c_advance_amt}}</td>
+        <td>{{item.c_date}}</td>
+        <td>{{item.c_time}}</td>
     
-        <th><i (click)="deleteResto(item.id)" class="fa fa-trash" style="font: size 30px;color:red;">
+        <th><i (click)="deleteChallan(item.c_id)" class="fa fa-trash" style="font: size 30px;color:red;">
         </i>
-        <a (click)="lcUpdateChallan(item.id)"><i class="fa fa-edit" style="font: size 30px;color:blue;"></i></a>
-        <a (click)="lcprintChallan(item.id)"><i class="fa fa-print" style="font: size 30px;color:blue;"></i></a>
+        <a (click)="lcUpdateChallan(item.c_id)"><i class="fa fa-edit" style="font: size 30px;color:blue;"></i></a>
+        <a (click)="lcprintChallan(item.c_id)"><i class="fa fa-print" style="font: size 30px;color:blue;"></i></a>
       </th>
       </tr>
     </tbody>

@@ -40,9 +40,9 @@ export class AppComponent {
     private authenticationService: AuthenticationService) {
       this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     // sets an idle timeout of 5 seconds, for testing purposes.
-      idle.setIdle(20);
+      idle.setIdle(1200);
       // sets a timeout period of 5 seconds. after 10 seconds of inactivity, the user will be considered timed out.
-      idle.setTimeout(10);
+      idle.setTimeout(500);
       // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
       idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 

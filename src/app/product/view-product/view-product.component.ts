@@ -10,7 +10,7 @@ import {UpdateProductComponent} from '../update-product/update-product.component
 })
 export class ViewProductComponent implements OnInit {
 
-  collection:any;
+  collection:any=[];
   count = 0;
 
   constructor(private viewProductService:ProductService, private hc:HeaderComponent) { }

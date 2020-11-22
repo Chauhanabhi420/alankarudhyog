@@ -10,7 +10,7 @@ import { UpdateReceiptComponent } from '../update-receipt/update-receipt.compone
 })
 export class ViewReceiptComponent implements OnInit {
 
-  collection:any;
+  collection:any = [];
   count = 0;
 
   constructor(private viewReceiptService:ReceiptService, private hc:HeaderComponent) { }

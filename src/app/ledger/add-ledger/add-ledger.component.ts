@@ -25,7 +25,7 @@ export class AddLedgerComponent implements OnInit {
 
   constructor(private ledgerService:LedgerService) { }
    getValues() {
-    //  console.warn(this.addLedger.value);
+     console.warn(this.addLedger.value);
     this.ledgerService.saveLedger(this.addLedger.value).subscribe((result)=>{
       this.alert=true
     })

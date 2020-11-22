@@ -16,7 +16,7 @@ export class UsersService {
   saveUsers(data)
   {
     // console.warn(data)
-    return this.http.post(this.url,data)  
+    return this.http.post(this.url+'/add',data)  
   }
 
   public getUsers()

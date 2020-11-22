@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ChallanService } from 'src/app/services/challan.service';
+import { UnitsService } from 'src/app/Services/units.service';
+import { LedgerService } from 'src/app/services/ledger.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-update-challan',
@@ -44,7 +47,18 @@ export class UpdateChallanComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
   
-  constructor(private editChallanService:ChallanService) { 
+  unitNameList:any = [];
+  partyNameList:any = [];
+  vehicleNameList:any = [];
+  productNameList:any = [];
+  partyDetailsList:any =[];
+
+  constructor(
+    private editChallanService:ChallanService,
+    private productName: ProductService,
+    private unitName: UnitsService,
+    private ledgerName: LedgerService
+    ) { 
     this.minDate = new Date();
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 15000);
@@ -56,33 +70,72 @@ export class UpdateChallanComponent implements OnInit {
     this.editChallanService.getCurrentChallan().subscribe((result)=>{
        console.warn(result)
       this.editChallan = new FormGroup({
-        challan_no: new FormControl(result['challan_no']),
-        challan_date: new FormControl(result['challan_date']),
-        challan_time: new FormControl(result['challan_time']),
-        unit: new FormControl(result['unit']),
-        selectParty: new FormControl(result['selectParty']),
-        party_name: new FormControl(result['party_name']),
-        party_address: new FormControl(result['party_address']),
-        party_mobile: new FormControl(result['party_mobile']),
-        party_name_hindi: new FormControl(result['party_name_hindi']),
-        party_address_hindi: new FormControl(result['party_address_hindi']),
+        challan_no: new FormControl(result['c_voucher_no']),
+        challan_date: new FormControl(result['c_date']),
+        challan_time: new FormControl(result['c_time']),
+        unit: new FormControl(result['c_company_id']),
+        selectParty: new FormControl(result['c_party_id']),
+        party_name: new FormControl(result['c_partyname']),
+        party_address: new FormControl(result['c_partyaddress']),
+        party_mobile: new FormControl(result['c_partymobile']),
+        party_name_hindi: new FormControl(result['c_partyname_hindi']),
+        party_address_hindi: new FormControl(result['c_partyaddress_hindi']),
         vehicleInfo: new FormControl(result['vehicleInfo']),
-        driver_name: new FormControl(result['driver_name']),
-        driver_mobile: new FormControl(result['driver_mobile']),
-        productInfo: new FormControl(result['productInfo']),
-        qty: new FormControl(result['qty']),
-        rate: new FormControl(result['rate']),
-        total_amount: new FormControl(result['total_amount']),
-        paymentMethod: new FormControl(result['paymentMethod']),
-        advance_amount: new FormControl(result['advance_amount']),
-        balance_sheet: new FormControl(result['balance_sheet']),
-        remark: new FormControl(result['remark']),
-        ravana_number: new FormControl(result['ravana_number']),
-        Weight: new FormControl(result['Weight']),
-        Royalty_amount: new FormControl(result['Royalty_amount'])
+        driver_name: new FormControl(result['c_driver_name']),
+        driver_mobile: new FormControl(result['c_driver_mobile']),
+        productInfo: new FormControl(result['c_product_id']),
+        qty: new FormControl(result['c_qty']),
+        rate: new FormControl(result['c_rate']),
+        total_amount: new FormControl(result['c_total_amt']),
+        paymentMethod: new FormControl(result['c_payment_type']),
+        advance_amount: new FormControl(result['c_advance_amt']),
+        balance_sheet: new FormControl(result['c_balance_amt']),
+        remark: new FormControl(result['c_remark']),
+        ravana_number: new FormControl(result['c_ravana_no']),
+        Weight: new FormControl(result['c_weight']),
+        Royalty_amount: new FormControl(result['c_royalty_amt'])
       })
+      // this.partyCall(result['c_party_id']);
     })
     this.id = this.editChallanService.cid;
+    this.loadProductName();
+    this.loadPartyName();
+    this.loadVehicleName();
+    this.loadUnitName();
+  }
+
+  partyCall(val:Int16Array) {
+    this.loadPartyDetails(val);
+  }
+
+  loadUnitName() {
+    this.unitName.getUnitName().subscribe((data:any) => {
+      this.unitNameList = data;
+    })
+  }
+  
+  loadPartyName() {
+    this.ledgerName.getPartyName().subscribe((data:any) => {
+      this.partyNameList = data;
+    })
+  }
+
+  loadVehicleName() {
+    this.ledgerName.getVehicleName().subscribe((data:any) => {
+      this.vehicleNameList = data;
+    })
+  }
+
+  loadPartyDetails(id) {
+    this.ledgerName.getPartyDetails(id).subscribe((data:any) => {
+      this.partyDetailsList = data;
+    })
+  }
+
+  loadProductName() {
+    this.productName.getProductName().subscribe((data:any) => {
+      this.productNameList = data;
+    })
   }
 
   updateChallan(){
