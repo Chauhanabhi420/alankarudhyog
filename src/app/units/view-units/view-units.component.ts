@@ -15,7 +15,7 @@ export class ViewUnitsComponent implements OnInit {
   count = 0;
   status = 0;
 
-  constructor(private viewUnitService:UnitsService, private hc:HeaderComponent) { }
+  constructor(private viewUnitService:UnitsService) { }
 
   ngOnInit(){
     this.viewUnitService.getUnits().subscribe((result)=> {
@@ -25,7 +25,6 @@ export class ViewUnitsComponent implements OnInit {
 
   public lcUpdateUnit(item){
     this.viewUnitService.tid = item;
-    this.hc.LC = UpdateUnitComponent;
   }
   public deleteUnit(id){
     this.viewUnitService.destroyUnits(id, status)

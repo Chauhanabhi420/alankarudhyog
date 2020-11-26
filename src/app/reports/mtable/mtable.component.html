@@ -1,0 +1,32 @@
+ 
+    <table class="table table-bordered table-sm table-striped table-hover table-responsive{-sm|-md|-lg|-xl}">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col" >S.N.</th>
+          <th scope="col" >Date</th>
+          <th scope="col" >CN</th>
+          <th scope="col" >Party</th>
+          <th scope="col" >Vehicle</th>
+          <th scope="col" >Item</th>
+          <th scope="col" >CFT</th>
+          <th scope="col">Credit</th>
+          <th scope="col">Cash</th>
+          <th scope="col" >Remark</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of collection | paginate : {itemsPerPage:1000, currentPage:p}">
+          <th scope="row">{{item.c_id}}</th>
+          <td>{{item.c_voucher_no}}</td> 
+          <td>{{item.company.com_name}}</td>
+          <td>{{item.c_partyname}}</td>
+          <td>{{item.ledger.ledger_name}}</td>
+          <td>{{item.product.p_name}}</td>
+          <td>{{item.user.user_company_address}}</td>
+          <td>{{item.c_payment_type}}</td>
+          <td>{{item.c_advance_amt}}</td>
+          <td>{{item.c_date}}</td>
+        </tr>
+      </tbody>
+      <pagination-controls (pageChange) = "p = $event"></pagination-controls>
+    </table>

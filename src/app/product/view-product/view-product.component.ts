@@ -13,7 +13,7 @@ export class ViewProductComponent implements OnInit {
   collection:any=[];
   count = 0;
 
-  constructor(private viewProductService:ProductService, private hc:HeaderComponent) { }
+  constructor(private viewProductService:ProductService) { }
 
   ngOnInit(){
     this.viewProductService.getProduct().subscribe((result)=> {
@@ -22,9 +22,7 @@ export class ViewProductComponent implements OnInit {
   })}
 
   public lcUpdateProduct(item){
-    this.viewProductService.pid= item;
-    this.hc.LC = UpdateProductComponent;
-    
+    this.viewProductService.pid= item;    
   }
 
   // deleteResto(item)

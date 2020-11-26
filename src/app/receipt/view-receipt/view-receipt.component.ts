@@ -13,7 +13,7 @@ export class ViewReceiptComponent implements OnInit {
   collection:any = [];
   count = 0;
 
-  constructor(private viewReceiptService:ReceiptService, private hc:HeaderComponent) { }
+  constructor(private viewReceiptService:ReceiptService) { }
 
   ngOnInit(){
     this.viewReceiptService.getReceipt().subscribe((result)=> {
@@ -22,9 +22,7 @@ export class ViewReceiptComponent implements OnInit {
   })}
 
   public lcUpdateProduct(item){
-    this.viewReceiptService.rid= item;
-    this.hc.LC = UpdateReceiptComponent;
-    
+    this.viewReceiptService.rid= item;    
   }
 
   // deleteResto(item)

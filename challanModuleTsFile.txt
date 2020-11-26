@@ -1,0 +1,9 @@
+run this in project : 
+1) npm i ng2-search-filter --save
+2) npm install  ng2-order-pipe --save
+3) npm install ngx-pagination --save
+
+import these files in challan.module.ts
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';

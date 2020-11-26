@@ -81,7 +81,7 @@
                 <div class="form-group col-md-4">
                     <label id="labelcolor">Vehicle *</label><br>
                     <select class="form-control" formControlName="vehicleInfo" required>
-                        <option name="vehicle">Select Vehicle</option>
+                        <option name="vehicle" value="0">Select Vehicle</option>
                         <option *ngFor="let partyName of vehicleNameList" [value]="partyName.ledger_id">
                             {{ partyName.ledger_name }}
                         </option>
@@ -130,8 +130,8 @@
                     <select class="form-control" formControlName="paymentMethod" required>
                         <option name="payment">Select Payment Type</option>
                         <option name="payment">Debit/Credit Card</option>
-                        <option name="payment">UPI</option>
-                        <option name="payment">Cash In Hand</option>
+                        <option name="payment">Cash</option>
+                        <option name="payment">Due/Adv.</option>
                     </select>
                 </div>
     

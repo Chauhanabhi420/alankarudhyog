@@ -10,7 +10,7 @@
     </div>
     <!-- success alert message end -->
 
-    <div class="container-fluid" style="border: 1px solid lightgrey;">
+    <div class="container" style="border: 1px solid lightgrey;">
         <form [formGroup]="addChallan" (ngSubmit)="getValues()">
             <div class="panel panel-primary" style="color:blue;">
                 <div class="panel-heading">
@@ -26,26 +26,26 @@
                         number</span>
                 </div>
 
-                <div class="form-group col-md-4">
-                    <label id="labelcolor">Date *</label><br>
-                     <input class="form-control" id="challan_date" formControlName="challan_date"
+                <!-- <div class="form-group col-md-4">
+                    <label id="labelcolor">Date *</label><br> -->
+                <!-- <input type="date" class="form-control" format="" id="challan_date" ngModel name="challan_date"  required/> -->
+                <!-- <input class="form-control" id="challan_date" formControlName="challan_date"
                         placeholder="{{valuedate | date: 'dd-MM-yyyy'}}" [minDate]="minDate" [maxDate]="maxDate"
                         bsDatepicker #datepickerYMD="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
                         required />
-                        <span class="error" *ngIf="challan_date.invalid && challan_date.touched">Please enter a valid
-                            challan date</span>
-                </div>
-
-                <!-- <div class="form-group col-md-4">
-                    <label id="labelcolor">Date *</label><br>
-                    <input type="date" class="form-control" id="challan_date" formControlName="challan_date" required />
-                    <span class="error" *ngIf="challan_date.invalid && challan_date.touched">Please enter a valid
-                        challan date</span>
                 </div> -->
 
                 <div class="form-group col-md-4">
+                    <label id="labelcolor">Date *</label><br>
+                    <!-- <input type="date" class="form-control" format="" id="challan_date" ngModel name="challan_date"  required/> -->
+                    <input type="date" class="form-control" id="challan_date" formControlName="challan_date" required />
+                    <span class="error" *ngIf="challan_date.invalid && challan_date.touched">Please enter a valid
+                        challan date</span>
+                </div>
+
+                <div class="form-group col-md-4">
                     <label id="labelcolor">Time *</label><br>
-                    <input type="time"  class="form-control" id="challan_time"
+                    <input type="time" placeholder="HH:mm:ss" class="form-control" id="challan_time"
                         formControlName="challan_time" required>
                     <span class="error" *ngIf="challan_time.invalid && challan_time.touched">Please enter a valid
                         challan time</span>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class ProductService {
 
   pid:any;
 
-  url = "http://localhost:3000/products"
-  rooturl = "http://localhost:3000"
+  rooturl = environment.rooturl;
+  url = `${this.rooturl}/products`;
 
   constructor(private http:HttpClient) { }
 

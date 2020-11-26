@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,10 @@ export class ChallanService {
 
   cid:any;
 
-  url = "http://localhost:3000/challans"
-  rooturl = "http://localhost:3000"
+  // url = "http://15.206.21.1:3000/challans"
+  // rooturl = "http://15.206.21.1:3000"
+  rooturl = environment.rooturl;
+  url = `${this.rooturl}/challans`;
 
   constructor(private http:HttpClient) { }
 
@@ -37,6 +40,7 @@ export class ChallanService {
 
   updateChallan(id, data)
   {
+    console.log(data);
     return this.http.patch(`${this.url}/${id}`, data)
   }
 

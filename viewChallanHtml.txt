@@ -5,7 +5,7 @@
   <table class="table table-bordered table-striped table-hover table-responsive{-sm|-md|-lg|-xl}">
     <thead class="thead-light">
       <tr>
-        <th scope="col" (click)="sort('id')">SNo.&nbsp;<i class="fa fa-sort"></i></th>
+        <th scope="col">SNo.</th>
         <th scope="col" (click)="sort('c_voucher_no')">Voucher&nbsp;<i class="fa fa-sort"></i></th>
         <th scope="col" (click)="sort('com_name')" >Company&nbsp;<i class="fa fa-sort"></i></th>
         <th scope="col" (click)="sort('c_partyname')">Party Name&nbsp;<i class="fa fa-sort"></i></th>

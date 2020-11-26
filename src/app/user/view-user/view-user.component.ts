@@ -13,7 +13,7 @@ export class ViewUserComponent implements OnInit {
   collection:any;
   count = 0;
 
-  constructor(private viewUserService:UsersService, private hc:HeaderComponent) { }
+  constructor(private viewUserService:UsersService) { }
 
   ngOnInit(){
     this.viewUserService.getUsers().subscribe((result)=> {
@@ -23,7 +23,6 @@ export class ViewUserComponent implements OnInit {
 
   public lcUpdateUser(item){
     this.viewUserService.uid = item;
-    this.hc.LC = UpdateUserComponent;
   }
 
 }

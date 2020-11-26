@@ -5,7 +5,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UnitsService } from 'src/app/Services/units.service';
 import { LedgerService } from 'src/app/services/ledger.service';
 import { getDate } from 'ngx-bootstrap/chronos/utils/date-getters';
-import { ActivatedRoute, Router } from '@angular/router';
 // import { PartyNames } from 'src/partyNames';
 
 
@@ -28,7 +27,7 @@ export class AddChallanComponent implements OnInit {
 
   minDate: Date;
   maxDate: Date;
-  // showDate = new Date();
+  showDate = new Date();
 
 
   constructor(
@@ -36,11 +35,9 @@ export class AddChallanComponent implements OnInit {
     private addChallanService:ChallanService, 
     private productName: ProductService,
     private unitName: UnitsService,
-    private ledgerName: LedgerService,
-    private route: ActivatedRoute,
-    private router: Router,
+    private ledgerName: LedgerService
     ) {
-      this.valuedate.setDate(this.valuedate.getDate() - 1);
+    // this.todayDate = this.valuedate.setDate(this.valuedate.getDate()- 1)
     this.minDate = new Date();
     this.maxDate = new Date();
     this.minDate.setDate(this.minDate.getDate() - 15000);
@@ -54,7 +51,7 @@ export class AddChallanComponent implements OnInit {
       party_mobile: this.partyDetailsList.ledger_mobile
     })
   }
-  totalAmt:number; //to store the total amount
+  totalAmt:number;
   calBal : number; //to store the balance amount
 
   //function to calculate total amount
@@ -73,40 +70,17 @@ export class AddChallanComponent implements OnInit {
     })
   }
 
-  //submit function to save the data into database
   getValues() {
     this.pakdoPartyDetailsKo();
-     console.warn(this.addChallan.value);
+    // console.warn(this.addChallan.value);
     this.addChallanService.saveChallan(this.addChallan.value).subscribe((result)=>{
       // console.warn(result);
-      this.alert=true;
-    
+      this.alert=true
     })
     
     this.addChallan.reset({})
-    this.addChallan.controls.challan_date.patchValue(this.formatDate(new Date()));
-    this.addChallan.controls.challan_time.patchValue(this.formattime(new Date()));
   }
 
-  private formatDate(date) {
-    // const d = new Date(date);
-    const d = this.valuedate;
-    let month = "" + (d.getMonth() + 1);
-    let day = "" + d.getDate();
-    const year = d.getFullYear();
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-    return [day, month, year].join("-");
-  }
-  private formattime(date) {
-    const t = new Date(date);
-    let hour = "" + (t.getHours() );
-    let minutes = "" + t.getMinutes();
-    const seconds = t.getSeconds();
-    // if (month.length < 2) month = "0" + month;
-    // if (day.length < 2) day = "0" + day;
-    return [hour, minutes].join(":");
-  }
   loadUnitName() {
     this.unitName.getUnitName().subscribe((data:any) => {
       this.unitNameList = data;
@@ -149,7 +123,7 @@ export class AddChallanComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
 
     this.addChallan = this.fb.group({
       challan_no: ['',Validators.required],
@@ -197,17 +171,9 @@ export class AddChallanComponent implements OnInit {
     this.addChallan.controls.advance_amount.valueChanges.subscribe(result=>{
       this.calculateBal();
     })
-
-    // this.addChallan.patchValue({
-    //   challan_date: this.formatDate(new Date()),
-    //   challan_time: this.formattime(new Date())
-    // })
-   
-    this.addChallan.controls.challan_date.patchValue(this.formatDate(new Date()));
-    this.addChallan.controls.challan_time.patchValue(this.formattime(new Date()));
+  
   }
 
-  //fetching form control validators status
   get challan_no(){return this.addChallan.get('challan_no')};
   get challan_date(){return this.addChallan.get('challan_date')};
   get challan_time(){return this.addChallan.get('challan_time')};

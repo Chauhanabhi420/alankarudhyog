@@ -27,6 +27,7 @@ import { AdminModule } from './admin/admin.module';
 import { UnitsModule } from './units/units.module';
 import { UserModule } from './user/user.module';
 import { ReceiptModule } from './receipt/receipt.module';
+import { ReportsModule } from './reports/reports.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ReceiptModule } from './receipt/receipt.module';
     UnitsModule,
     UserModule,
     ReceiptModule,
+    ReportsModule,
     BrowserAnimationsModule,
     NgbModule,
     MDBBootstrapModule,

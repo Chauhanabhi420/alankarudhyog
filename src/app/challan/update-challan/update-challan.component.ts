@@ -75,12 +75,12 @@ export class UpdateChallanComponent implements OnInit {
         challan_time: new FormControl(result['c_time']),
         unit: new FormControl(result['c_company_id']),
         selectParty: new FormControl(result['c_party_id']),
-        party_name: new FormControl(result['c_partyname']),
-        party_address: new FormControl(result['c_partyaddress']),
-        party_mobile: new FormControl(result['c_partymobile']),
+        party_name: new FormControl(this.partyNameList.ledger_name),
+        party_address: new FormControl(this.partyNameList.ledger_address_line1),
+        party_mobile: new FormControl(this.partyNameList.ledger_mobile),
         party_name_hindi: new FormControl(result['c_partyname_hindi']),
         party_address_hindi: new FormControl(result['c_partyaddress_hindi']),
-        vehicleInfo: new FormControl(result['vehicleInfo']),
+        vehicleInfo: new FormControl(result['c_vehicle_id']),
         driver_name: new FormControl(result['c_driver_name']),
         driver_mobile: new FormControl(result['c_driver_mobile']),
         productInfo: new FormControl(result['c_product_id']),
@@ -95,7 +95,7 @@ export class UpdateChallanComponent implements OnInit {
         Weight: new FormControl(result['c_weight']),
         Royalty_amount: new FormControl(result['c_royalty_amt'])
       })
-      // this.partyCall(result['c_party_id']);
+      this.partyCall(result['c_party_id']);
     })
     this.id = this.editChallanService.cid;
     this.loadProductName();

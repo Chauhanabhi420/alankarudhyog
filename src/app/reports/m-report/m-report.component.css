@@ -1,0 +1,13 @@
+.container-fluid {
+    margin-top: 10px;
+    padding: 30px;
+    padding-top: 0%;
+    margin-bottom: 10px;
+  
+    align-content: center;
+    display: flex;
+  }
+
+  .white-space{
+    height: 20px;
+}

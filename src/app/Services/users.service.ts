@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
+import { environment } from '../../../src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,10 @@ export class UsersService {
 
   uid:any;
 
-  url = "http://localhost:3000/users"
-  rooturl = "http://localhost:3000"
+  // url = "http://15.206.21.1:3000/users"
+  // rooturl = "http://15.206.21.1:3000"
+  rooturl = environment.rooturl;
+  url = `${this.rooturl}/users`;
 
   constructor(private http:HttpClient) { }
 

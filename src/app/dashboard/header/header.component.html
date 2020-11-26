@@ -1,16 +1,16 @@
 <div class="app-container">
-    <mat-toolbar color="primary" id="au-navbar">
+    <mat-toolbar style="background-color: darkslategray;" id="au-navbar">
         <div class="sidenavIcon">
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon [inline]="true">menu</mat-icon>
             </button>
         </div>
         <span>
-            <h1 style="padding-left: 10px;">ALANKAR UDHYOG</h1>
+            <h1 style="padding-left: 10px;"><span style="color: coral;">ALANKAR</span>&nbsp;<span style="color: white;">UDHYOG</span> </h1>
         </span>
 
         <span class="toolbar-spacer"></span>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <a class="nav-item nav-link" style="color: wheat;" (click)="logout()">Logout</a>
     </mat-toolbar>
     <mat-sidenav-container class="sidenavcontainer">
         <mat-sidenav #sidenav opened mode="side" position="start">
@@ -20,20 +20,20 @@
                 </mat-card-header> -->
                 <div class="icon-bg-color">
                     <a mat-tab-link [routerLink]="'/'">
-                        <img src="/assets/logo.png">
+                        <img src="./assets/logo.png">
                     </a>
                 </div>
                 <div class="menu-list-item">
                     <mat-list-item>
-                        <button class="menu-item" mat-flat-button (click)="lcDCard()">
-                            <mat-icon>dashboard</mat-icon>
-                            Dashboard
+                        <button class="menu-item" mat-flat-button>
+                            <mat-icon>dashboard</mat-icon> &nbsp; &nbsp;
+                            <a mat-tab-link-active [routerLink]="['./dCard']">Dashboard</a>
                         </button>
                     </mat-list-item>
                     <mat-divider></mat-divider>
                     <mat-list-item>
                         <button class="menu-item" mat-flat-button (click)="toggleMSM()">
-                            <mat-icon>settings</mat-icon>
+                            <mat-icon>settings</mat-icon>&nbsp; &nbsp;
                             Manage Masters
                         </button><span><br></span>
                     </mat-list-item>
@@ -48,16 +48,16 @@
                         <mat-divider></mat-divider>
                         <div class="sub-menu-item" *ngIf="showLSM" style="padding-left: 25px;">
                             <mat-list-item class="nav-sub-menu-item">
-                                <button class="menu-item" mat-flat-button (click)="lcAddLedger()">
-                                    <mat-icon>category</mat-icon>
-                                    Add Ledger
+                                <button class="menu-item" mat-flat-button>
+                                    <mat-icon>category</mat-icon>&nbsp; &nbsp;
+                                    <a mat-tab-link [routerLink]="['./addLedger']" >Add Ledger</a>
                                 </button>
                             </mat-list-item>
                             <mat-divider></mat-divider>
                             <mat-list-item class="nav-sub-menu-item">
-                                <button class="menu-item" mat-flat-button (click)="lcViewLedger()">
-                                    <mat-icon>category</mat-icon>
-                                    View/Edit Ledger
+                                <button class="menu-item" mat-flat-button>
+                                    <mat-icon>category</mat-icon>&nbsp; &nbsp;
+                                    <a mat-tab-link [routerLink]="['./viewLedger']" >Edit/View Ledger</a>
                                 </button>
                             </mat-list-item>
                             <mat-divider></mat-divider>
@@ -71,16 +71,16 @@
                         <mat-divider></mat-divider>
                         <div class="sub-menu-item" *ngIf="showPSM" style="padding-left: 25px;">
                             <mat-list-item class="nav-sub-menu-item">
-                                <button class="menu-item" mat-flat-button (click)="lcAddProduct()">
-                                    <mat-icon>category</mat-icon>
-                                    Add Product
+                                <button class="menu-item" mat-flat-button>
+                                    <mat-icon>category</mat-icon>&nbsp; &nbsp;
+                                    <a mat-tab-link [routerLink]="['./addProduct']" >Add Product </a>
                                 </button>
                             </mat-list-item>
                             <mat-divider></mat-divider>
                             <mat-list-item class="nav-sub-menu-item">
-                                <button class="menu-item" mat-flat-button (click)="lcViewProduct()">
-                                    <mat-icon>category</mat-icon>
-                                    View/Edit Product
+                                <button class="menu-item" mat-flat-button>
+                                    <mat-icon>category</mat-icon>&nbsp; &nbsp;
+                                    <a mat-tab-link [routerLink]="['./viewProduct']" >View/Edit Product </a>
                                 </button>
                             </mat-list-item>
                             <mat-divider></mat-divider>
@@ -94,16 +94,16 @@
                         <mat-divider></mat-divider>
                         <div class="sub-menu-item" *ngIf = "showUSM" style="padding-left: 25px;">
                             <mat-list-item class="nav-sub-menu-item">
-                                <button class="menu-item" mat-flat-button (click)="lcAddUser()">
-                                    <mat-icon>category</mat-icon>
-                                    Add User
+                                <button class="menu-item" mat-flat-button>
+                                    <mat-icon>category</mat-icon>&nbsp; &nbsp;
+                                    <a mat-tab-link [routerLink]="['./addUser']" >Add User </a>
                                 </button>
                             </mat-list-item>
                             <mat-divider></mat-divider>
                             <mat-list-item class="nav-sub-menu-item">
-                                <button class="menu-item" mat-flat-button (click)="lcViewUser()">
-                                    <mat-icon>category</mat-icon>
-                                    View/Edit User
+                                <button class="menu-item" mat-flat-button>
+                                    <mat-icon>category</mat-icon>&nbsp; &nbsp;
+                                    <a mat-tab-link [routerLink]="['./viewUser']" >View/Edit User </a>
                                 </button>
                             </mat-list-item>
                             <mat-divider></mat-divider>
@@ -117,16 +117,16 @@
                         <mat-divider></mat-divider>
                         <div class="sub-menu-item" *ngIf = "showTSM" style="padding-left: 25px;">
                             <mat-list-item class="nav-sub-menu-item">
-                                <button class="menu-item" mat-flat-button (click)="lcAddUnit()">
-                                    <mat-icon>category</mat-icon>
-                                    Add Unit
+                                <button class="menu-item" mat-flat-button>
+                                    <mat-icon>category</mat-icon>&nbsp; &nbsp;
+                                    <a mat-tab-link [routerLink]="['./addUnit']" >Add Unit</a>
                                 </button>
                             </mat-list-item>
                             <mat-divider></mat-divider>
                             <mat-list-item class="nav-sub-menu-item">
-                                <button class="menu-item" mat-flat-button (click)="lcViewUnit()">
-                                    <mat-icon>category</mat-icon>
-                                    View/Edit Unit
+                                <button class="menu-item" mat-flat-button>
+                                    <mat-icon>category</mat-icon>&nbsp; &nbsp;
+                                    <a mat-tab-link [routerLink]="['./viewUnit']" >View/Edit Unit </a>
                                 </button>
                             </mat-list-item>
                             <mat-divider></mat-divider>
@@ -141,16 +141,16 @@
                     <mat-divider></mat-divider>
                     <div class="sub-menu-item" *ngIf="showChallan" style="padding-left: 15px;">
                         <mat-list-item>
-                            <button class="menu-item" mat-flat-button (click)="lcAddChallan()">
-                                <mat-icon>library_books</mat-icon>
-                                Add Challan
+                            <button class="menu-item" mat-flat-button>
+                                <mat-icon>library_books</mat-icon>&nbsp; &nbsp;
+                                <a mat-tab-link [routerLink]="['./addChallan']" >Add Challan</a>
                             </button>
                         </mat-list-item>
                         <mat-divider></mat-divider>
                         <mat-list-item>
-                            <button class="menu-item" mat-flat-button (click)="lcViewChallan()">
-                                <mat-icon>library_books</mat-icon>
-                                View/Edit Challan
+                            <button class="menu-item" mat-flat-button>
+                                <mat-icon>library_books</mat-icon>&nbsp; &nbsp;
+                                <a mat-tab-link [routerLink]="['./viewChallan']" >Edit/View Challan</a>
                             </button>
                         </mat-list-item>
                         <mat-divider></mat-divider>
@@ -166,32 +166,51 @@
                     <mat-divider></mat-divider>
                     <div class="sub-menu-item" *ngIf="showRSM" style="padding-left: 15px;">
                         <mat-list-item>
-                            <button class="menu-item" mat-flat-button (click)="lcAddReceipt()">
-                                <mat-icon>library_books</mat-icon>
-                                Add Receipt
+                            <button class="menu-item" mat-flat-button>
+                                <mat-icon>library_books</mat-icon>&nbsp; &nbsp;
+                                <a mat-tab-link [routerLink]="['./addReceipt']" >Add Receipt</a>
                             </button>
                         </mat-list-item>
                         <mat-divider></mat-divider>
                         <mat-list-item>
-                            <button class="menu-item" mat-flat-button (click)="lcViewReceipt()">
-                                <mat-icon>library_books</mat-icon>
-                                View/Edit Receipt
+                            <button class="menu-item" mat-flat-button>
+                                <mat-icon>library_books</mat-icon>&nbsp; &nbsp;
+                                <a mat-tab-link [routerLink]="['./viewReceipt']" >Edit/View Receipt</a>
                             </button>
                         </mat-list-item>
                         <mat-divider></mat-divider>
                     </div>
+
+                   <!---------------------reports/logs menu    ---------------->
                     <mat-list-item>
-                        <button class="menu-item" mat-flat-button>
+                        <button class="menu-item" mat-flat-button (click)="toggleRpSM()">
                             <mat-icon>table_view</mat-icon>
                             Report/Logs
                         </button>
                     </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <div class="sub-menu-item" *ngIf="showRpSM" style="padding-left: 15px;">
+                        <mat-list-item>
+                            <button class="menu-item" mat-flat-button>
+                                <mat-icon>library_books</mat-icon>&nbsp; &nbsp;
+                                <a mat-tab-link [routerLink]="['./mReport']" >Miscellaneous Report</a>
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <button class="menu-item" mat-flat-button>
+                                <mat-icon>library_books</mat-icon>&nbsp; &nbsp;
+                                <a mat-tab-link [routerLink]="['./vReport']" >Vehicle Report</a>
+                            </button>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                    </div>
                 </div>
             </mat-list>
         </mat-sidenav>
         <mat-sidenav-content>
             <div class="main-content">
-                <ng-container *ngComponentOutlet="LC"></ng-container>
+                <ng-container><router-outlet></router-outlet></ng-container>
             </div>`
         </mat-sidenav-content>
     </mat-sidenav-container>

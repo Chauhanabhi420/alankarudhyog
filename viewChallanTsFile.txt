@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ChallanService} from '../../services/challan.service';
+import {ChallanDataFields} from 'src/ChallanDataFields';
+import {MatTableDataSource} from '@angular/material/table'
+import { UpdateChallanComponent } from '../update-challan/update-challan.component';
+import {HeaderComponent} from '../../dashboard/header/header.component';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-view-challan',
@@ -26,7 +31,8 @@ export class ViewChallanComponent implements OnInit {
   p:number =1;
 
   constructor(
-    private viewChallanService:ChallanService
+    private viewChallanService:ChallanService, 
+    private hc:HeaderComponent
   ) { }
 
   ngOnInit(){
@@ -55,6 +61,7 @@ export class ViewChallanComponent implements OnInit {
 
   public lcUpdateChallan(item){
     this.viewChallanService.cid = item;
+    this.hc.LC = UpdateChallanComponent;
   }
 
 }

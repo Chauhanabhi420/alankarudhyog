@@ -9,6 +9,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { ViewChallanComponent } from './view-challan/view-challan.component';
 import { UpdateChallanComponent } from './update-challan/update-challan.component'
 import {DashboardModule} from '../dashboard/dashboard.module';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -21,7 +24,10 @@ import {DashboardModule} from '../dashboard/dashboard.module';
     MaterialModule,
     BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
   ],
   exports:[
     AddChallanComponent,

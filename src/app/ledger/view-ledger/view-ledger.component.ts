@@ -13,7 +13,7 @@ export class ViewLedgerComponent implements OnInit {
   collection:any;
   count = 0;
 
-  constructor(private viewLedgerService:LedgerService, private hc:HeaderComponent) { }
+  constructor(private viewLedgerService:LedgerService) { }
 
   ngOnInit(){
     this.viewLedgerService.getLedger().subscribe((result)=> {
@@ -22,9 +22,7 @@ export class ViewLedgerComponent implements OnInit {
   })}
 
   public lcUpdateLedger(item){
-    this.viewLedgerService.lid= item;
-    this.hc.LC = UpdateLedgerComponent;
-    
+    this.viewLedgerService.lid= item;    
   }
 
 }

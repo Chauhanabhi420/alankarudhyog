@@ -1,0 +1,94 @@
+<h3>Miscellaneous Reports</h3>
+<div class="container">
+    <div class="container-fluid" style="border:1px solid lightgrey; border-radius: 20px;">
+        <form [formGroup]="mReportForm">
+            <!--------------------------form heading------------------------->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <button mat-flat-button disabled btn-block style="background-color: white; color: black;">
+                        <mat-icon>search</mat-icon>&nbsp; search for the mislleneous report
+                    </button>
+                    <hr style="padding-top: 0%;">
+                    <!-- <h3 class="panel-title">search for the mislleneous report</h3> -->
+                </div>
+            </div>
+
+            <div class="row">
+                <!--------------------Party Name Drop Down------------------->
+                <div class="form-group col-md-4">
+                    <label name="labelcolor">Party</label><br>
+                    <select class="form-control" formControlName="partyList">
+                        <option name="party" value="0" selected>All</option>
+                        <option *ngFor="let partyName of partyNameList" [value]="partyName.ledger_id">
+                            {{ partyName.ledger_name }}
+                        </option>
+                    </select>
+                </div>
+
+                <!--------------------Vehicle Name Drop Down------------------->
+                <div class="form-group col-md-4">
+                    <label name="labelcolor">Vehicle</label><br>
+                    <select class="form-control" formControlName="vehicleList">
+                        <option name="vehicle" value="0" selected>All</option>
+                        <option *ngFor="let vehicleName of vehicleNameList" [value]="vehicleName.ledger_id">
+                            {{ vehicleName.ledger_name }}
+                        </option>
+                    </select>
+                </div>
+
+                <!--------------------Product Name Drop Down------------------->
+                <div class="form-group col-md-4">
+                    <label name="labelcolor">Product</label><br>
+                    <select class="form-control" formControlName="productList">
+                        <option name="product" value="0" selected>All</option>
+                        <option *ngFor="let productName of productNameList" [value]="productName.ledger_id">
+                            {{ productName.p_name }}
+                        </option>
+                    </select>
+                </div>
+
+                <!--------------------Start Date Field------------------->
+                <div class="form-group col-md-4">
+                    <label id="labelcolor">Start Date</label><br>
+                    <input type="date" class="form-control" id="startDate" formControlName="startDate" />
+                    <!-- <span class="error" *ngIf="challan_date.invalid && challan_date.touched">Please enter a valid
+                    challan date</span> -->
+                </div>
+
+                <!--------------------End Date Field------------------->
+                <div class="form-group col-md-4">
+                    <label id="labelcolor">End Date</label><br>
+                    <input type="date" class="form-control" id="endDate" formControlName="endDate" />
+                    <!-- <span class="error" *ngIf="challan_date.invalid && challan_date.touched">Please enter a valid
+                    challan date</span> -->
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for=""></label><br>
+                    <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+                    <button type="reset" class="btn btn-danger" placeholder="Reset">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="white-space"></div>
+
+    <div class="container-fluid" style="border:1px solid lightgrey;">
+
+        <div style="padding: 10px;">
+            <h1 class="text-right">
+                <button class="btn btn-sm" mat-flat-button color="primary">excel</button> &nbsp;
+                <button mat-flat-button color="warn">pdf</button>
+            </h1>
+            <div style="margin-top: 0%;">
+                <hr>
+            </div>
+            <app-mtable></app-mtable>
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+    <div class="white-space" style="height: 200px;"></div>
+</div>

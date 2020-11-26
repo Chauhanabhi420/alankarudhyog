@@ -27,7 +27,7 @@ currentUser: any;
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
-            this.router.navigate(['/']);
+            this.router.navigate(['/dashboard']);
         }
     }
     model: User = new User();
@@ -70,7 +70,7 @@ currentUser: any;
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigateByUrl('/header');
+                    this.router.navigateByUrl('/dashboard');
                 },
                 error => {
                     this.error = error;
