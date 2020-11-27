@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../src/environments/environment.prod';
+import { IchallanNo } from 'src/challanNo';
 
 @Injectable({
   providedIn: 'root'
@@ -44,4 +45,8 @@ export class ChallanService {
     return this.http.patch(`${this.url}/${id}`, data)
   }
 
+  //to get the count of challan number for the current date
+  getChallanNo(): Observable<IchallanNo[]> {
+    return this.http.get<IchallanNo[]>(`${this.url}/challan-no`)
+  }
 }

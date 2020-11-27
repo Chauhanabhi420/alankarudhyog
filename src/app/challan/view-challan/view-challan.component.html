@@ -91,7 +91,17 @@
         <td>{{item.ledger.ledger_name}}</td>
         <td>{{item.product.p_name}}</td>
         <td>{{item.user.user_company_address}}</td>
-        <td>{{item.c_payment_type}}</td>
+        <td>
+          <ng-template [ngIf]="item.c_payment_type===1" [ngIfElse]="cash">
+            <span>credit</span>
+          </ng-template>
+          <ng-template [ngIf]="item.c_payment_type===2" [ngIfElse]="adv" #cash>
+            <span>cash</span>
+          </ng-template>
+          <ng-template [ngIf]="item.c_payment_type===3" #adv>
+            <span>Adv.</span>
+          </ng-template>
+        </td>
         <td>{{item.c_advance_amt}}</td>
         <td>{{item.c_date}}</td>
         <td>{{item.c_time}}</td>

@@ -6,6 +6,7 @@ import { UnitsService } from 'src/app/Services/units.service';
 import { LedgerService } from 'src/app/services/ledger.service';
 import { getDate } from 'ngx-bootstrap/chronos/utils/date-getters';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IchallanNo } from 'src/challanNo';
 // import { PartyNames } from 'src/partyNames';
 
 
@@ -23,6 +24,7 @@ export class AddChallanComponent implements OnInit {
   partyNameList:any = [];
   vehicleNameList:any = [];
   productNameList:any = [];
+  challanNum: IchallanNo[];
 
   valuedate = new Date();
 
@@ -86,6 +88,22 @@ export class AddChallanComponent implements OnInit {
     this.addChallan.reset({})
     this.addChallan.controls.challan_date.patchValue(this.formatDate(new Date()));
     this.addChallan.controls.challan_time.patchValue(this.formattime(new Date()));
+
+    this.addChallanService.getChallanNo().subscribe((result: IchallanNo[])=> {
+      this.challanNum = result
+      if(this.challanNum != null && this.challanNum != undefined) {
+        this.challanNum.forEach((challanNo) =>{
+          this.challanNo = challanNo.c_voucher_no;
+        })
+        this.addChallan.patchValue({
+          challan_no: Number(this.challanNo)+1
+        })
+      } else {
+        this.addChallan.patchValue({
+          challan_no: '1001'
+        })
+      }
+    })
   }
 
   private formatDate(date) {
@@ -103,8 +121,8 @@ export class AddChallanComponent implements OnInit {
     let hour = "" + (t.getHours() );
     let minutes = "" + t.getMinutes();
     const seconds = t.getSeconds();
-    // if (month.length < 2) month = "0" + month;
-    // if (day.length < 2) day = "0" + day;
+    if (hour.length < 2) hour = "0" + hour;
+    if (minutes.length < 2) minutes = "0" + minutes;
     return [hour, minutes].join(":");
   }
   loadUnitName() {
@@ -148,13 +166,30 @@ export class AddChallanComponent implements OnInit {
       this.loadPartyDetails(val);
   }
 
-
+  challanNo:string;
+  
   ngOnInit(): void {  
+
+    this.addChallanService.getChallanNo().subscribe((result: IchallanNo[])=> {
+      this.challanNum = result
+      if(this.challanNum != null && this.challanNum != undefined) {
+        this.challanNum.forEach((challanNo) =>{
+          this.challanNo = challanNo.c_voucher_no;
+        })
+        this.addChallan.patchValue({
+          challan_no: Number(this.challanNo)+1
+        })
+      } else {
+        this.addChallan.patchValue({
+          challan_no: '1001'
+        })
+      }
+    })
 
     this.addChallan = this.fb.group({
       challan_no: ['',Validators.required],
       challan_date: ['',Validators.required],
-      challan_time: ['',Validators.required],
+      challan_time: [''],
       unit: ['',Validators.required],
       selectParty: ['',Validators.required],
       party_name: [''],

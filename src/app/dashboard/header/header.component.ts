@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   //Logout function
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['./login']);
   }
 
   //toggle manage master button
